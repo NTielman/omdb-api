@@ -1,11 +1,13 @@
 import React from 'react';
 
-const MovieItem = () => {
+const MovieItem = ({ movie }) => {
 
     return (
-        <section className='movie-item'>
-            item
-        </section>
+        <div className='movie-list__movie-item'>
+            <img src={movie.Poster} alt='movie poster' />
+            <p>{movie.Title}</p>
+            <a href={`https://www.imdb.com/title/${movie.imdbID}/`} target="_blank" rel="noreferrer">{movie.imdbID}</a>
+        </div>
     );
 }
 

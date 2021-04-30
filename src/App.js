@@ -1,5 +1,8 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import Header from './components/Header';
+import MovieList from './components/MovieOverview';
+
 
 function App() {
   const [movieItems, setMovieItems] = useState({
@@ -22,10 +25,10 @@ function App() {
 
   }, [setMovieItems]);
 
-
   return (
     <div className="App">
-      {movieItems.loadingMovies ? 'loading movies' : `${movieItems.movies[0].Title}`}
+      <Header />
+      <MovieList isLoading={movieItems.loadingMovies} movies={movieItems.movies} />
     </div>
   );
 }
