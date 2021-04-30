@@ -28,7 +28,7 @@ body {
 /* Header styles
    ====================================================== */
 .header {
-  height: 70%;
+  height: 75%;
   padding: 30px;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(14, 14, 14, 0)), to(#0E0E0E));
   background-image: linear-gradient(180deg, rgba(14, 14, 14, 0) 43%, #0E0E0E 100%);
@@ -72,6 +72,38 @@ body {
   padding: .8em;
   text-align: center;
   width: 259px;
+}
+
+/* MovieOverview styles
+   ====================================================== */
+.movie-list {
+  padding: 60px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.movie-list__load-btn {
+  border: 2px solid #ffffff4b;
+  border-radius: 28px;
+  background: transparent;
+  color: currentColor;
+  font-size: 1rem;
+  line-height: 20px;
+  margin: 22px 0;
+  padding: .8em;
+  text-decoration: none;
+  font-family: 'Righteous', cursive;
 }
 
 .backdrop {
