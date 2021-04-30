@@ -1,8 +1,6 @@
-// import React from 'react';
 import React, { useState, useEffect } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { selectMovie } from '../actions';
+import { selectMovie, toggleModal } from '../actions';
 
 const MovieItem = ({ movie }) => {
     const dispatch = useDispatch();
@@ -33,11 +31,12 @@ const MovieItem = ({ movie }) => {
             })
             .catch((err) => console.log(err.message));
 
-    }, [setMovieItem]);
+    }, [setMovieItem, movie.imdbID]);
 
     return (
         <div className='movie-list__movie-item' onClick={() => {
             dispatch(selectMovie(movieItem.movie))
+            dispatch(toggleModal())
         }}>
             <img src={movie.Poster} alt='movie poster' className='movie-list__movie-item__poster' />
             {movieItem.movie ? movieInfo() : 'loading movie info...'}

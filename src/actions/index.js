@@ -4,3 +4,9 @@ export const selectMovie = (movieId) => {
         payload: movieId,
     }
 }
+
+export const toggleModal = () => {
+    return {
+        type: 'TOGGLE-MODAL',
+    }
+}

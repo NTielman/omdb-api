@@ -9,7 +9,7 @@ const Header = () => {
         <section className='header'>
             <img src={logo} alt='DotControl logo' />
             <img src={getSelectedMovie.Poster} alt='movie poster' />
-            <p>{getSelectedMovie.Title}</p>
+            <h1>{getSelectedMovie.Title}</h1>
             <p>{getSelectedMovie.Plot}</p>
             <a href={`https://www.imdb.com/title/${getSelectedMovie.imdbID}/`} target="_blank" rel="noreferrer">More information</a>
         </section>

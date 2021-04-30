@@ -8,3 +8,7 @@ body {
   background-color: black;
   color: white;
 }
+
+.backdrop {
+  background-color: rgb(216, 22, 22);
+}
