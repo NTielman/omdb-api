@@ -37,7 +37,7 @@ const MovieList = () => {
     return (
         <section className='movie-list'>
             {movieItems.isLoading ? 'Hold on while we fetch some movies' : showMovieItems()}
-            <button>Load more</button>
+            <button className='movie-list__load-btn'>Load more</button>
         </section>
     );
 }

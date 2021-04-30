@@ -5,14 +5,21 @@ import { useSelector } from 'react-redux';
 const Header = () => {
     const getSelectedMovie = useSelector(state => state.moviedetail);
 
+    const backgImage = {
+        backgroundImage: `url("${getSelectedMovie.Poster}")`, backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+    }
+    const defaultImage = {
+        background: 'green'
+    }
+
     return (
-        <section className='header'>
-            <img src={logo} alt='DotControl logo' />
-            <img src={getSelectedMovie.Poster} alt='movie poster' />
-            <h1>{getSelectedMovie.Title}</h1>
-            <p>{getSelectedMovie.Plot}</p>
-            <a href={`https://www.imdb.com/title/${getSelectedMovie.imdbID}/`} target="_blank" rel="noreferrer">More information</a>
-        </section>
+        <header className='header' style={getSelectedMovie.Poster ? backgImage : defaultImage}>
+            <img className='header__logo' src={logo} alt='DotControl logo' />
+            <h1 className='header__title'>{getSelectedMovie.Title}</h1>
+            <p className='header__text'>{getSelectedMovie.Plot}</p>
+            <a className='header__btn' href={`https://www.imdb.com/title/${getSelectedMovie.imdbID}/`} target="_blank" rel="noreferrer">More information <i className="fab fa-imdb header__btn__icon"></i></a>
+        </header>
     );
 }
 
