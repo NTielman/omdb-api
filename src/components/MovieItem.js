@@ -14,8 +14,7 @@ const MovieItem = ({ movie }) => {
             <div className='movie-item__movie-info'>
                 <h3 className='movie-item__movie-info__title'>{movieItem.movie.Title}</h3>
                 <p className='movie-item__movie-info__genre'>{movieItem.movie.Genre}</p>
-                <span className='movie-item__movie-info__rating'>{movieItem.movie.imdbRating}</span>
-                <span className='movie-item__movie-info__rating'>{movieRating}</span>
+                <span className='movie-item__movie-info__rating' style={{ "--percent": `${movieItem.movie.imdbRating / 10 * 100}%` }}>{movieRating}</span>
             </div>)
     }
 

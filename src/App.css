@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Global styles
    ====================================================== */
 * {
@@ -27,13 +28,16 @@ body {
 /* Header styles
    ====================================================== */
 .header {
-  height: 75%;
+  height: 70%;
   position: relative;
   padding: 30px;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+  background-image: url(./assets/movie-poster-large.png);
+  background-image: url(//images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2100&q=80);
 }
 
 .header__logo {
@@ -134,6 +138,7 @@ body {
   border: 0.1em solid #ffffff4b;
   border-radius: 28px;
   background: transparent;
+  width: 50%;
   color: currentColor;
   line-height: 20px;
   margin: 2em;
@@ -146,6 +151,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .movie-list__load-btn::before {
@@ -163,7 +171,7 @@ body {
 .movie-item {
   width: 95%;
   height: 498px;
-  margin: 1em 0;
+  margin: 20px 0;
   position: relative;
 }
 
@@ -173,14 +181,13 @@ body {
   height: 100%;
   width: 100%;
   left: 0;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, rgba(14, 14, 14, 0)), color-stop(90%, #0E0E0E));
-  background: linear-gradient(180deg, rgba(14, 14, 14, 0) 60%, #0E0E0E 90%);
+  background: radial-gradient(circle, rgba(14, 14, 14, 0) 0%, #0e0e0e 100%);
   bottom: 0;
 }
 
 .movie-item__poster {
   width: 100%;
-  height: 95%;
+  height: 90%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -199,6 +206,21 @@ body {
 
 .movie-item__movie-info__title {
   font-family: 'Righteous', cursive;
+}
+
+.movie-item__movie-info__rating {
+  font-size: .8rem;
+}
+
+.movie-item__movie-info__rating::before {
+  content: '❤❤︎❤︎❤︎❤︎';
+  content: '🖤🖤🖤🖤🖤';
+  letter-spacing: .1rem;
+  background: -webkit-gradient(linear, left top, right top, from(#FF2345), to(rgba(255, 255, 255, 0.1)));
+  background: linear-gradient(90deg, #FF2345 var(--percent), rgba(255, 255, 255, 0.1) var(--percent));
+  background-clip: text;
+  color: transparent;
+  margin-right: 1.5em;
 }
 
 /* Movie item styles

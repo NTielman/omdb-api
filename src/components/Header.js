@@ -9,16 +9,13 @@ const Header = () => {
         backgroundImage: `url("${getSelectedMovie.Poster}")`, backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
     }
-    const defaultImage = {
-        background: '#FF2345'
-    }
 
     return (
-        <header className='header' style={getSelectedMovie.Poster ? backgImage : defaultImage}>
+        <header className='header' style={getSelectedMovie.Poster ? backgImage : null}>
             <img className='header__logo' src={logo} alt='DotControl logo' />
-            <h1 className='header__title'>{getSelectedMovie.Title}</h1>
-            <p className='header__text'>{getSelectedMovie.Plot}</p>
-            {getSelectedMovie.imdbID ? <a className='header__btn' href={`https://www.imdb.com/title/${getSelectedMovie.imdbID}/`} target="_blank" rel="noreferrer">More information<i className="fab fa-imdb header__btn__icon"></i></a> : null}
+            <h1 className='header__title'>{getSelectedMovie.Title ? getSelectedMovie.Title : 'Featured Movie'}</h1>
+            <p className='header__text'>{getSelectedMovie.Title ? getSelectedMovie.Plot : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}</p>
+            <a className='header__btn' href={getSelectedMovie.imdbID ? `https://www.imdb.com/title/${getSelectedMovie.imdbID}/` : 'https://www.imdb.com/'} target="_blank" rel="noreferrer">More information<i className="fab fa-imdb header__btn__icon"></i></a>
         </header>
     );
 }

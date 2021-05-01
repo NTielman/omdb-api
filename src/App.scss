@@ -26,12 +26,15 @@ body {
 /* Header styles
    ====================================================== */
 .header {
-    height: 75%;
+    height: 70%;
     position: relative;
     padding: 30px;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     transform-style: preserve-3d;
+    background-image: url(./assets/movie-poster-large.png);
+    background-image: url(//images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2100&q=80);
 
     &__logo{
         width: 58.6px;
@@ -112,6 +115,7 @@ body {
         border: 0.1em solid #ffffff4b;
         border-radius: 28px;
         background: transparent;
+        width: 50%;
         color: currentColor;
         line-height: 20px;
         margin: 2em;
@@ -120,6 +124,7 @@ body {
         font-family: 'Righteous', cursive;
         display: flex;
         align-items: center;
+        justify-content: center;
 
         &::before {
             content: ' ';
@@ -138,7 +143,7 @@ body {
 .movie-item {
     width: 95%;
     height: 498px;
-    margin: 1em 0;
+    margin: 20px 0;
     position: relative;
 
     &::after {
@@ -147,13 +152,13 @@ body {
         height: 100%;
         width: 100%;
         left: 0;
-        background: linear-gradient(180deg, rgba(14,14,14,0.00) 60%, #0E0E0E 90%);
+        background: radial-gradient(circle, rgba(14,14,14,0) 0%, rgba(14,14,14,1) 100%);
         bottom: 0;
     }
 
     &__poster {
         width: 100%;
-        height: 95%;
+        height: 90%;
         object-fit: cover;
     }
 
@@ -170,8 +175,23 @@ body {
         &__title {
             font-family: 'Righteous', cursive;
         }
+
+        &__rating {
+            font-size: .8rem;
+
+            &::before {
+                content: '❤❤︎❤︎❤︎❤︎'; //fallback for emoji-unicode
+                content: '🖤🖤🖤🖤🖤';
+                letter-spacing: .1rem;
+                background: linear-gradient(90deg, #FF2345 var(--percent), rgba(255,255,255,0.10) var(--percent));
+                background-clip: text;
+                color: transparent;
+                margin-right: 1.5em;
+            }
+        }
     }
 }
+
 
 /* Movie item styles
    ====================================================== */
@@ -207,7 +227,6 @@ body {
 
     &__poster {
         width: 100%;
-        // height: 65%;
         object-fit: cover;
         object-position: left top;
     }
