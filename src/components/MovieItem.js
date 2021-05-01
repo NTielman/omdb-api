@@ -11,11 +11,11 @@ const MovieItem = ({ movie }) => {
     const movieInfo = () => {
         const movieRating = movieItem.movie.Ratings[0].Value;
         return (
-            <div className='movie-list__movie-item__movie-info'>
-                <p>{movieItem.movie.Title}</p>
-                <p>{movieItem.movie.Genre}</p>
-                <p>{movieItem.movie.imdbRating}</p>
-                <span>{movieRating}</span>
+            <div className='movie-item__movie-info'>
+                <h3 className='movie-item__movie-info__title'>{movieItem.movie.Title}</h3>
+                <p className='movie-item__movie-info__genre'>{movieItem.movie.Genre}</p>
+                <span className='movie-item__movie-info__rating'>{movieItem.movie.imdbRating}</span>
+                <span className='movie-item__movie-info__rating'>{movieRating}</span>
             </div>)
     }
 
@@ -34,11 +34,14 @@ const MovieItem = ({ movie }) => {
     }, [setMovieItem, movie.imdbID]);
 
     return (
-        <div className='movie-list__movie-item' onClick={() => {
-            dispatch(selectMovie(movieItem.movie))
-            dispatch(toggleModal())
-        }}>
-            <img src={movie.Poster} alt='movie poster' className='movie-list__movie-item__poster' />
+        <div className='movie-item'
+            onClick={() => {
+                dispatch(selectMovie(movieItem.movie))
+                dispatch(toggleModal())
+            }}>
+
+            <img src={movie.Poster} alt='movie poster' className='movie-item__poster' />
+
             {movieItem.movie ? movieInfo() : 'loading movie info...'}
         </div>
     );

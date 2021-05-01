@@ -10,7 +10,7 @@ const Header = () => {
         backgroundSize: 'cover',
     }
     const defaultImage = {
-        background: 'green'
+        background: '#FF2345'
     }
 
     return (
@@ -18,7 +18,7 @@ const Header = () => {
             <img className='header__logo' src={logo} alt='DotControl logo' />
             <h1 className='header__title'>{getSelectedMovie.Title}</h1>
             <p className='header__text'>{getSelectedMovie.Plot}</p>
-            <a className='header__btn' href={`https://www.imdb.com/title/${getSelectedMovie.imdbID}/`} target="_blank" rel="noreferrer">More information <i className="fab fa-imdb header__btn__icon"></i></a>
+            {getSelectedMovie.imdbID ? <a className='header__btn' href={`https://www.imdb.com/title/${getSelectedMovie.imdbID}/`} target="_blank" rel="noreferrer">More information<i className="fab fa-imdb header__btn__icon"></i></a> : null}
         </header>
     );
 }
