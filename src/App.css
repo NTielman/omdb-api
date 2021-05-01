@@ -13,9 +13,9 @@ html {
   font-size: 16px;
 }
 
-.App,
+body,
 #root,
-body {
+.App {
   width: 100%;
   height: 100%;
 }
@@ -29,45 +29,48 @@ body {
    ====================================================== */
 .header {
   height: 70%;
+  padding: 1.8em;
+  background: url(//images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2100&q=80) no-repeat center/cover;
   position: relative;
-  padding: 30px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  background-image: url(//images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2100&q=80);
+}
+
+.header::before {
+  height: 100%;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #0e0e0e), color-stop(40%, rgba(14, 14, 14, 0)), color-stop(60%, rgba(14, 14, 14, 0)), to(#0e0e0e));
+  background: linear-gradient(180deg, #0e0e0e 10%, rgba(14, 14, 14, 0) 40%, rgba(14, 14, 14, 0) 60%, #0e0e0e 100%);
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .header__logo {
   width: 58.6px;
-  -webkit-transform: translateZ(1rem);
-          transform: translateZ(1rem);
 }
 
 .header__title {
-  margin-top: .8em;
-  font-family: 'Righteous', cursive;
-  font-size: 3.5rem;
-  letter-spacing: 0;
-  line-height: 60px;
-  width: 315px;
-  -webkit-transform: translateZ(1rem);
-          transform: translateZ(1rem);
+  font-family: "Righteous", cursive;
 }
 
 .header__description {
-  margin: 1em 0;
+  width: 90%;
+  margin-top: 1em;
   font-size: 1.1rem;
-  letter-spacing: 0;
-  line-height: 24px;
-  width: 315px;
-  -webkit-transform: translateZ(1rem);
-          transform: translateZ(1rem);
+  line-height: 1.5rem;
 }
 
 .header__btn {
+  width: 250px;
+  margin: 2em 0;
+  border-radius: 28px;
+  padding: .8em;
   background-color: #FF2345;
+  font-family: "Righteous", cursive;
+  color: currentColor;
+  text-decoration: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -76,49 +79,28 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-decoration: none;
-  color: currentColor;
-  border-radius: 28px;
-  margin: 2em 0;
-  font-size: 1rem;
-  font-family: 'Righteous', cursive;
-  line-height: 20px;
-  padding: .8em;
-  text-align: center;
-  width: 250px;
-  -webkit-transform: translateZ(1rem);
-          transform: translateZ(1rem);
 }
 
 .header__btn__icon {
   font-size: 1.5rem;
 }
 
-.header::after,
-.header::before {
-  content: ' ';
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 0;
+.header__title {
+  width: 90%;
+  margin-top: .8em;
+  font-size: 3.75rem;
+  line-height: 3.75rem;
 }
 
-.header::before {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(43%, rgba(14, 14, 14, 0)), to(#0E0E0E));
-  background: linear-gradient(180deg, rgba(14, 14, 14, 0) 43%, #0E0E0E 100%);
-  bottom: 0;
-}
-
-.header::after {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #0E0E0E), color-stop(60%, rgba(14, 14, 14, 0)));
-  background: linear-gradient(180deg, #0E0E0E 10%, rgba(14, 14, 14, 0) 60%);
-  top: 0;
+.header__logo, .header__title, .header__description, .header__btn {
+  -webkit-transform: translateZ(1rem);
+          transform: translateZ(1rem);
 }
 
 /* MovieOverview styles
    ====================================================== */
 .movie-list {
-  padding: 30px;
+  padding: 1.8em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -134,16 +116,15 @@ body {
 }
 
 .movie-list__load-btn {
+  width: 50%;
+  margin: 2em;
   border: 0.1em solid #ffffff4b;
   border-radius: 28px;
+  padding: .8em;
   background: transparent;
-  width: 50%;
-  color: currentColor;
-  line-height: 20px;
-  margin: 2em;
-  padding: .8em 1em;
+  font-family: "Righteous", cursive;
   text-decoration: none;
-  font-family: 'Righteous', cursive;
+  color: currentColor;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -153,34 +134,33 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  /* Load icon */
 }
 
 .movie-list__load-btn::before {
-  content: ' ';
-  background-image: url(./assets/load-icon.png);
   width: 1.2rem;
   height: 1.2rem;
-  display: inline-block;
-  background-size: cover;
   margin-right: 1em;
+  content: ' ';
+  background: url(./assets/load-icon.png) no-repeat center/cover;
 }
 
 /* Movie item styles
    ====================================================== */
 .movie-item {
   width: 95%;
-  height: 498px;
-  margin: 20px 0;
+  height: calc(95vw / .75);
+  margin: 1.2em 0;
   position: relative;
 }
 
 .movie-item::after {
-  content: ' ';
-  position: absolute;
   height: 100%;
   width: 100%;
-  left: 0;
+  content: ' ';
   background: radial-gradient(circle, rgba(14, 14, 14, 0) 0%, #0e0e0e 100%);
+  position: absolute;
+  left: 0;
   bottom: 0;
 }
 
@@ -192,19 +172,19 @@ body {
 }
 
 .movie-item__movie-info {
+  width: 100%;
+  padding: 1em;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(14, 14, 14, 0)), color-stop(40%, #0E0E0E));
+  background: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, #0E0E0E 40%);
+  line-height: 1.5em;
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 1em;
   z-index: 1;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(14, 14, 14, 0)), color-stop(40%, #0E0E0E));
-  background: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, #0E0E0E 40%);
-  width: 100%;
-  line-height: 1.5em;
 }
 
 .movie-item__movie-info__title {
-  font-family: 'Righteous', cursive;
+  font-family: "Righteous", cursive;
 }
 
 .movie-item__movie-info__rating {
@@ -212,25 +192,27 @@ body {
 }
 
 .movie-item__movie-info__rating::before {
+  margin-right: 1.5em;
   content: '❤❤︎❤︎❤︎❤︎';
   content: '🖤🖤🖤🖤🖤';
-  letter-spacing: .1rem;
   background: -webkit-gradient(linear, left top, right top, from(#FF2345), to(rgba(255, 255, 255, 0.1)));
   background: linear-gradient(90deg, #FF2345 var(--percent), rgba(255, 255, 255, 0.1) var(--percent));
   background-clip: text;
+  letter-spacing: .1rem;
   color: transparent;
-  margin-right: 1.5em;
 }
 
-/* Movie item styles
+/* Modal styles
    ====================================================== */
 .backdrop {
-  background-color: #0e0e0e80;
   width: 100%;
   height: 100%;
+  padding: 2em;
+  background-color: #0e0e0e80;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   position: fixed;
   top: 0;
-  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -240,21 +222,20 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 2em;
+  cursor: pointer;
   z-index: 2;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
 }
 
 .backdrop__icon {
-  cursor: pointer;
   position: absolute;
-  top: 2%;
+  top: 2.5%;
+  cursor: pointer;
 }
 
 .modal {
   width: 95%;
   height: 95%;
+  background-color: #0E0E0E;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -266,38 +247,43 @@ body {
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  background-color: #0E0E0E;
 }
 
 .modal__poster {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: left top;
-     object-position: left top;
 }
 
 .modal__info {
   padding: 1.5em;
-  position: absolute;
-  bottom: 0;
   background-color: #0E0E0E;
   background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e00), color-stop(10%, #0E0E0E));
   background: linear-gradient(180deg, #0e0e0e00 0%, #0E0E0E 10%);
+  position: absolute;
+  bottom: 0;
 }
 
 .modal__info__title {
-  font-family: 'Righteous', cursive;
+  font-family: "Righteous", cursive;
 }
 
 .modal__info__description {
-  margin: 1em 0;
+  width: 90%;
+  margin-top: 1em;
   font-size: 1.1rem;
-  line-height: 24px;
+  line-height: 1.5rem;
 }
 
 .modal__info__btn {
+  width: 250px;
+  margin: 2em 0;
+  border-radius: 28px;
+  padding: .8em;
   background-color: #FF2345;
+  font-family: "Righteous", cursive;
+  color: currentColor;
+  text-decoration: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -306,19 +292,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  text-decoration: none;
-  color: currentColor;
-  border-radius: 28px;
-  margin: 2em 0 0;
-  font-size: 1rem;
-  font-family: 'Righteous', cursive;
-  line-height: 20px;
-  padding: .8em;
-  text-align: center;
-  width: 250px;
 }
 
 .modal__info__btn__icon {
   font-size: 1.5rem;
+}
+
+.modal__info__btn {
+  margin: 2em 0 0;
 }
 /*# sourceMappingURL=App.css.map */
