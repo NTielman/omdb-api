@@ -3,23 +3,15 @@ import { useDispatch } from 'react-redux';
 import { selectMovie, toggleModal } from '../actions';
 
 const MovieItem = ({ movie }) => {
+
     const dispatch = useDispatch();
     const [movieItem, setMovieItem] = useState({
         isLoading: false,
         movie: null,
     });
-    const movieInfo = () => {
-        const movieRating = movieItem.movie.Ratings[0].Value;
-        return (
-            <div className='movie-item__movie-info'>
-                <h3 className='movie-item__movie-info__title'>{movieItem.movie.Title}</h3>
-                <p className='movie-item__movie-info__genre'>{movieItem.movie.Genre}</p>
-                <span className='movie-item__movie-info__rating' style={{ "--percent": `${movieItem.movie.imdbRating / 10 * 100}%` }}>{movieRating}</span>
-            </div>)
-    }
 
+    // fetches individual movie details
     useEffect(() => {
-
         setMovieItem({ isLoading: true })
         const apiKey = '6907e1c0'
         const apiUrl = `http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`
@@ -29,8 +21,17 @@ const MovieItem = ({ movie }) => {
                 setMovieItem({ isLoading: false, movie: data })
             })
             .catch((err) => console.log(err.message));
-
     }, [setMovieItem, movie.imdbID]);
+
+    const showMovieInfo = () => {
+        const movieRating = movieItem.movie.Ratings[0].Value;
+        return (
+            <div className='movie-item__movie-info'>
+                <h3 className='movie-item__movie-info__title'>{movieItem.movie.Title}</h3>
+                <p className='movie-item__movie-info__genre'>{movieItem.movie.Genre}</p>
+                <span className='movie-item__movie-info__rating' style={{ "--percent": `${movieItem.movie.imdbRating / 10 * 100}%` }}>{movieRating}</span>
+            </div>)
+    }
 
     return (
         <div className='movie-item'
@@ -40,8 +41,7 @@ const MovieItem = ({ movie }) => {
             }}>
 
             <img src={movie.Poster} alt='movie poster' className='movie-item__poster' />
-
-            {movieItem.movie ? movieInfo() : 'loading movie info...'}
+            {movieItem.movie ? showMovieInfo() : <p>loading movie info...</p>}
         </div>
     );
 }

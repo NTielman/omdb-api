@@ -1,19 +1,19 @@
-import './App.css';
 import React from 'react';
 import Header from './components/Header';
 import MovieOverview from './components/MovieOverview';
-import MovieDetail from './components/MovieDetail'
+import MovieModal from './components/MovieModal'
 import { useSelector } from 'react-redux';
+import './App.css';
 
 function App() {
 
-  const modalIsVisible = useSelector(state => state.modal);
+  const modalIsVisible = useSelector(state => state.modalVisibility);
 
   return (
     <div className="App">
       <Header />
       <MovieOverview />
-      {modalIsVisible ? <MovieDetail /> : null}
+      {modalIsVisible ? <MovieModal /> : null}
     </div>
   );
 }

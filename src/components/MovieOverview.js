@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import MovieItem from './MovieItem';
 
 const MovieList = () => {
+
     const [movieItems, setMovieItems] = useState({
         isLoading: false,
         movies: null,
     });
 
+    // fetches list of 'superhero' movies
     useEffect(() => {
-
         setMovieItems({ isLoading: true })
         const apiKey = '6907e1c0'
         const apiUrl = `http://www.omdbapi.com/?s=superhero&apikey=${apiKey}`
@@ -18,25 +19,24 @@ const MovieList = () => {
                 setMovieItems({ isLoading: false, movies: data.Search })
             })
             .catch((err) => console.log(err.message));
-
     }, [setMovieItems]);
 
 
-    const showMovieItems = () => {
+    const listMovieItems = () => {
         if (movieItems.movies) {
-            const items = movieItems.movies.map(movie => {
+            const movies = movieItems.movies.map(movie => {
                 return (
                     <MovieItem
                         movie={movie}
                         key={movie.imdbID} />)
             })
-            return items;
+            return movies;
         }
     }
 
     return (
         <section className='movie-list'>
-            {movieItems.isLoading ? 'Hold on while we fetch some movies...' : showMovieItems()}
+            {movieItems.isLoading ? <p>Hold on while we fetch some movies...</p> : listMovieItems()}
             <button className='movie-list__load-btn'>Load more</button>
         </section>
     );

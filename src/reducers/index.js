@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import moviedetail from './movieDetail';
-import modal from './modal';
+import selectedMovie from './selectedMovie';
+import modalVisibility from './modalVisibility';
 
 
 const rootReducer = combineReducers({
-    moviedetail,
-    modal
+    selectedMovie,
+    modalVisibility
 });
 
 export default rootReducer;
