@@ -5,20 +5,26 @@ const MovieList = () => {
 
     const [movieItems, setMovieItems] = useState({
         isLoading: false,
-        movies: null,
+        movies: [],
     });
+    const [pageNum, setPageNum] = useState(1);
 
-    // fetches list of 'superhero' movies
-    useEffect(() => {
-        setMovieItems({ isLoading: true })
-        const apiKey = '6907e1c0'
-        const apiUrl = `http://www.omdbapi.com/?s=superhero&apikey=${apiKey}`
+    const loadMovies = () => {
+        const apiKey = '6907e1c0';
+        const apiUrl = `http://www.omdbapi.com/?s=superhero&page=${pageNum}&apikey=${apiKey}`;
         fetch(apiUrl)
             .then((response) => response.json())
             .then((data) => {
-                setMovieItems({ isLoading: false, movies: data.Search })
+                setMovieItems({ isLoading: false, movies: [...movieItems.movies, ...data.Search] })
             })
             .catch((err) => console.log(err.message));
+        setPageNum(pageNum + 1);
+    }
+
+    // fetches initial list of movies on mount
+    useEffect(() => {
+        setMovieItems({ isLoading: true });
+        loadMovies();
     }, [setMovieItems]);
 
 
@@ -39,7 +45,9 @@ const MovieList = () => {
             <div className='movie-list'>
                 {movieItems.isLoading ? <p>Hold on while we fetch some movies...</p> : listMovieItems()}
             </div>
-            <button className='load-btn'>Load more</button>
+            <button className='load-btn' onClick={() => {
+                loadMovies()
+            }}>Load more</button>
         </main>
     );
 }

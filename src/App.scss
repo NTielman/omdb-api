@@ -149,6 +149,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    cursor: pointer;
 
     /* Load icon */
     &::before {
@@ -171,6 +172,7 @@ main {
     max-height: 550px;
     margin: 1.2em .6em;
     position: relative;
+    cursor: pointer;
 
     &::after {
         height: 100%;
@@ -190,7 +192,7 @@ main {
     &__movie-info {
         width: 100%;
         padding: 1.7em;
-        background: linear-gradient(180deg, rgba(14,14,14,0.00) 0%, rgba(14, 14, 14, 0.9) 40%);
+        background: linear-gradient(180deg, rgba(14,14,14,0.00) 0%, rgba(14, 14, 14, 0.9) 43%);
         line-height: 2em;
         position: absolute;
         bottom: 0;
@@ -240,7 +242,6 @@ main {
     &__icon {
         position: absolute;
         top: 2.5%;
-        cursor: pointer;
     }
 }
 

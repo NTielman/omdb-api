@@ -170,6 +170,7 @@ main {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  cursor: pointer;
   /* Load icon */
 }
 
@@ -192,6 +193,7 @@ main {
   max-height: 550px;
   margin: 1.2em .6em;
   position: relative;
+  cursor: pointer;
 }
 
 .movie-item::after {
@@ -213,8 +215,8 @@ main {
 .movie-item__movie-info {
   width: 100%;
   padding: 1.7em;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(14, 14, 14, 0)), color-stop(40%, rgba(14, 14, 14, 0.9)));
-  background: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, rgba(14, 14, 14, 0.9) 40%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(14, 14, 14, 0)), color-stop(43%, rgba(14, 14, 14, 0.9)));
+  background: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, rgba(14, 14, 14, 0.9) 43%);
   line-height: 2em;
   position: absolute;
   bottom: 0;
@@ -272,7 +274,6 @@ main {
 .backdrop__icon {
   position: absolute;
   top: 2.5%;
-  cursor: pointer;
 }
 
 .modal {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { selectMovie, toggleModal } from '../actions';
+import defaultPoster from '../assets/movie-poster.png';
 
 const MovieItem = ({ movie }) => {
 
@@ -40,7 +41,7 @@ const MovieItem = ({ movie }) => {
                 dispatch(toggleModal())
             }}>
 
-            <img src={movie.Poster} alt='movie poster' className='movie-item__poster' />
+            <img src={movie.Poster != "N/A" ? movie.Poster : defaultPoster} alt='movie poster' className='movie-item__poster' />
             {movieItem.movie ? showMovieInfo() : <p>loading movie info...</p>}
         </div>
     );
