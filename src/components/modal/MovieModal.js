@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleModal } from '../actions';
+import { toggleModal } from '../../actions';
 
 const MovieModal = () => {
 

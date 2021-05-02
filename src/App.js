@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './components/Header';
-import MovieOverview from './components/MovieOverview';
-import MovieModal from './components/MovieModal'
 import { useSelector } from 'react-redux';
-import './App.css';
+import Header from './components/header/Header';
+import MovieOverview from './components/movieOverview/MovieOverview';
+import MovieModal from './components/modal/MovieModal'
+import './App.scss';
 
 function App() {
 

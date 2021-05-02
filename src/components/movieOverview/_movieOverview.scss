@@ -1,0 +1,56 @@
+/* MovieOverview styles
+   ====================================================== */
+main {
+    padding: 1.25em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    top: 550px;
+}
+
+.movie-list {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.load-btn {
+    width: 195px;
+    height: 56px;
+    margin: 3.8em auto;
+    border: 0.125em solid rgba(255, 255, 255, 0.2);
+    border-radius: $borderRadius;
+    padding: .8em;
+    background: transparent;
+    font-family: $titleFont;
+    font-size: 1rem;
+    color: currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    /* Load icon */
+    &::before {
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-right: 1.07em;
+        content: ' ';
+        background: url(../../assets/load-icon.png) no-repeat center/cover;
+    }
+}
+
+/* Media queries
+   ====================================================== */
+@media (min-width: 1025px) {
+
+    main {
+        top: 750px;
+    }
+    
+}

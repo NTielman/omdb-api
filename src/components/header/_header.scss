@@ -1,0 +1,71 @@
+/* Header styles
+   ====================================================== */
+.header {
+    height: 100%;
+    min-height: 478px;
+    max-height: 800px;
+    padding: 1.8em;
+    background: url(//images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2100&q=80) no-repeat center/cover; // placeholder background
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    &::before {
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(180deg, rgba(14,14,14,1) 10%, rgba(14,14,14,0) 40%, rgba(14,14,14,0) 60%, rgba(14,14,14,1) 100%);
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &::after {
+        height: 100%;
+        width: 100%;
+        content: ' ';
+        background: radial-gradient(circle, rgba(14,14,14,0) 0%, rgba(14, 14, 14, 0.5) 100%);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+
+    &__content {
+        min-width: 315px;
+        width: 90%;
+        max-width: 1200px;
+        z-index: 1;
+
+        @include movieDescription;
+
+        &__title {
+            margin-top: 1.3em;
+            font-size: 3.75rem;
+            line-height: 1em;
+        }
+    }
+}
+
+
+/* Media queries
+   ====================================================== */
+@media (min-width: 1025px) {
+
+    .header {
+        padding: 2.8em;
+
+        &__content {    
+            
+            &__title {
+                margin-top: 1.8em;
+                font-size: 5.6rem;
+            }
+
+            &__description {
+                font-weight: bold;
+            }
+    
+        }
+    }
+    
+}

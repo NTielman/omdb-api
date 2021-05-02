@@ -1,0 +1,57 @@
+/* Modal styles
+   ====================================================== */
+.backdrop {
+    width: 100%;
+    height: 100%;
+    padding: 2em;
+    background-color: #0e0e0e80;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+
+    &__icon {
+        position: absolute;
+        top: 2.5%;
+    }
+}
+
+.modal {
+    width: 95%;
+    min-width: 335px;
+    max-width: 1000px;
+    min-height: 498px;
+    max-height: 690px;
+    height: 90%;
+    background-color: $bckgColor;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    &__poster {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__info {
+        width: 100%;
+        padding: 1.5em;
+        background-color: $bckgColor; // fallback for older browsers
+        background: linear-gradient(180deg, #0e0e0e00 0%, $bckgColor 10%);
+        position: absolute;
+        bottom: 0;
+
+        @include movieDescription;
+    
+        &__btn {
+            margin: 2em 0 0;
+        }
+    }
+}

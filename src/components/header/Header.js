@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import logo from '../assets/DotControl-logo.png';
+import logo from '../../assets/DotControl-logo.png';
 
 const Header = () => {
 
