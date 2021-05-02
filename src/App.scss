@@ -8,27 +8,32 @@ $titleFont: 'Righteous', cursive;
 
 @mixin movieDescription {
     &__title {
+        width: 90%;
+        max-width: 700px;
         font-family: $titleFont;
     }
 
     &__description {
         width: 90%;
+        max-width: 570px;
         margin-top: 1em;
-        font-size: 1.1rem;
+        font-size: 1.125rem;
         line-height: 1.5rem;
     }
 
     &__btn {
-        width: 250px;
-        margin: 2em 0;
+        width: 259px;
+        max-width: 90%;
+        height: 56px;
+        margin-top: 2em;
         border-radius: $borderRadius;
-        padding: .8em;
+        padding: 0 1.8em;
         background-color: $accentColor;
         font-family: $titleFont;
         color: currentColor;
         text-decoration: none;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
 
         &__icon {
@@ -63,11 +68,15 @@ body {
 /* Header styles
    ====================================================== */
 .header {
-    height: 70%;
+    height: 100%;
+    min-height: 478px;
+    max-height: 800px;
     padding: 1.8em;
     background: url(//images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2100&q=80) no-repeat center/cover; // placeholder background
     position: relative;
-    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    z-index: -1;
 
     &::before {
         height: 100%;
@@ -79,74 +88,94 @@ body {
         left: 0;
     }
 
-    &__logo{
-        width: 58.6px;
+    &::after {
+        height: 100%;
+        width: 100%;
+        content: ' ';
+        background: radial-gradient(circle, rgba(14,14,14,0) 0%, rgba(14, 14, 14, 0.5) 100%);
+        position: absolute;
+        left: 0;
+        bottom: 0;
     }
 
-    @include movieDescription;
-
-    &__title {
+    &__content {
+        min-width: 315px;
         width: 90%;
-        margin-top: .8em;
-        font-size: 3.75rem;
-        line-height: 3.75rem;
-    }
+        max-width: 1200px;
+        z-index: 1;
 
-    &__logo,
-    &__title,
-    &__description,
-    &__btn {
-        transform: translateZ(1rem);
+        @include movieDescription;
+
+        &__title {
+            margin-top: 1.3em;
+            font-size: 3.75rem;
+            line-height: 1em;
+        }
     }
 }
 
 /* MovieOverview styles
    ====================================================== */
-.movie-list {
-    padding: 1.8em;
+main {
+    padding: 1.25em;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
+    position: absolute;
+    z-index: 1;
+    top: 550px;
+}
 
-    &__load-btn {
-        width: 50%;
-        margin: 2em;
-        border: 0.1em solid #ffffff4b;
-        border-radius: $borderRadius;
-        padding: .8em;
-        background: transparent;
-        font-family: $titleFont;
-        text-decoration: none;
-        color: currentColor;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.movie-list {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
-        /* Load icon */
-        &::before {
-            width: 1.2rem;
-            height: 1.2rem;
-            margin-right: 1em;
-            content: ' ';
-            background: url(./assets/load-icon.png) no-repeat center/cover;
-        }
+.load-btn {
+    width: 195px;
+    height: 56px;
+    margin: 3.8em auto;
+    border: 0.125em solid rgba(255, 255, 255, 0.2);
+    border-radius: $borderRadius;
+    padding: .8em;
+    background: transparent;
+    font-family: $titleFont;
+    font-size: 1rem;
+    color: currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* Load icon */
+    &::before {
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-right: 1.07em;
+        content: ' ';
+        background: url(./assets/load-icon.png) no-repeat center/cover;
     }
 }
 
 /* Movie item styles
    ====================================================== */
 .movie-item {
-    width: 95%;
-    height: calc(95vw / .75);
-    margin: 1.2em 0;
+    width: 100%;
+    min-width: 335px;
+    max-width: 370px;
+    min-height: 498px;
+    height: calc(95vw / .7);
+    max-height: 550px;
+    margin: 1.2em .6em;
     position: relative;
 
     &::after {
         height: 100%;
         width: 100%;
         content: ' ';
-        background: radial-gradient(circle, rgba(14,14,14,0) 0%, rgba(14,14,14,1) 100%);
         position: absolute;
         left: 0;
         bottom: 0;
@@ -154,15 +183,15 @@ body {
 
     &__poster {
         width: 100%;
-        height: 90%;
+        height: 100%;
         object-fit: cover;
     }
 
     &__movie-info {
         width: 100%;
-        padding: 1em;
-        background: linear-gradient(180deg, rgba(14,14,14,0.00) 0%, #0E0E0E 40%);
-        line-height: 1.5em;
+        padding: 1.7em;
+        background: linear-gradient(180deg, rgba(14,14,14,0.00) 0%, rgba(14, 14, 14, 0.9) 40%);
+        line-height: 2em;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -170,18 +199,22 @@ body {
 
         &__title {
             font-family: $titleFont;
+            font-size: 1.5rem;
         }
 
         &__rating {
-            font-size: .8rem;
+            font-size: .87rem;
+            font-family: sans-serif;
+            font-weight: bold;
 
             &::before {
-                margin-right: 1.5em;
+                margin-right: 1.4em;
                 content: '❤❤︎❤︎❤︎❤︎'; //fallback for emoji-unicode
                 content: '🖤🖤🖤🖤🖤';
                 background: linear-gradient(90deg, $accentColor var(--percent), rgba(255,255,255,0.10) var(--percent));
                 background-clip: text;
-                letter-spacing: .1rem;
+                letter-spacing: .2rem;
+                font-size: 1rem;
                 color: transparent;
             }
         }
@@ -213,7 +246,11 @@ body {
 
 .modal {
     width: 95%;
-    height: 95%;
+    min-width: 335px;
+    max-width: 1000px;
+    min-height: 498px;
+    max-height: 690px;
+    height: 90%;
     background-color: $bckgColor;
     display: flex;
     flex-direction: column;
@@ -222,10 +259,13 @@ body {
 
     &__poster {
         width: 100%;
+        height: 100%;
         object-fit: cover;
+        object-position: center;
     }
 
     &__info {
+        width: 100%;
         padding: 1.5em;
         background-color: $bckgColor; // fallback for older browsers
         background: linear-gradient(180deg, #0e0e0e00 0%, $bckgColor 10%);
@@ -236,6 +276,31 @@ body {
     
         &__btn {
             margin: 2em 0 0;
+        }
+    }
+}
+
+/* Media queries
+   ====================================================== */
+@media (min-width: 1025px) {
+    main {
+        top: 750px;
+    }
+
+    .header {
+        padding: 2.8em;
+
+        &__content {    
+            
+            &__title {
+                margin-top: 1.8em;
+                font-size: 5.6rem;
+            }
+
+            &__description {
+                font-weight: bold;
+            }
+    
         }
     }
 }

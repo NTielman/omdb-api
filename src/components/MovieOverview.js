@@ -35,10 +35,12 @@ const MovieList = () => {
     }
 
     return (
-        <section className='movie-list'>
-            {movieItems.isLoading ? <p>Hold on while we fetch some movies...</p> : listMovieItems()}
-            <button className='movie-list__load-btn'>Load more</button>
-        </section>
+        <main>
+            <div className='movie-list'>
+                {movieItems.isLoading ? <p>Hold on while we fetch some movies...</p> : listMovieItems()}
+            </div>
+            <button className='load-btn'>Load more</button>
+        </main>
     );
 }
 

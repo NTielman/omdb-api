@@ -28,12 +28,19 @@ body {
 /* Header styles
    ====================================================== */
 .header {
-  height: 70%;
+  height: 100%;
+  min-height: 478px;
+  max-height: 800px;
   padding: 1.8em;
   background: url(//images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2100&q=80) no-repeat center/cover;
   position: relative;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  z-index: -1;
 }
 
 .header::before {
@@ -47,26 +54,44 @@ body {
   left: 0;
 }
 
-.header__logo {
-  width: 58.6px;
+.header::after {
+  height: 100%;
+  width: 100%;
+  content: ' ';
+  background: radial-gradient(circle, rgba(14, 14, 14, 0) 0%, rgba(14, 14, 14, 0.5) 100%);
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
-.header__title {
+.header__content {
+  min-width: 315px;
+  width: 90%;
+  max-width: 1200px;
+  z-index: 1;
+}
+
+.header__content__title {
+  width: 90%;
+  max-width: 700px;
   font-family: "Righteous", cursive;
 }
 
-.header__description {
+.header__content__description {
   width: 90%;
+  max-width: 570px;
   margin-top: 1em;
-  font-size: 1.1rem;
+  font-size: 1.125rem;
   line-height: 1.5rem;
 }
 
-.header__btn {
-  width: 250px;
-  margin: 2em 0;
+.header__content__btn {
+  width: 259px;
+  max-width: 90%;
+  height: 56px;
+  margin-top: 2em;
   border-radius: 28px;
-  padding: .8em;
+  padding: 0 1.8em;
   background-color: #FF2345;
   font-family: "Righteous", cursive;
   color: currentColor;
@@ -74,33 +99,29 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.header__btn__icon {
+.header__content__btn__icon {
   font-size: 1.5rem;
 }
 
-.header__title {
-  width: 90%;
-  margin-top: .8em;
+.header__content__title {
+  margin-top: 1.3em;
   font-size: 3.75rem;
-  line-height: 3.75rem;
-}
-
-.header__logo, .header__title, .header__description, .header__btn {
-  -webkit-transform: translateZ(1rem);
-          transform: translateZ(1rem);
+  line-height: 1em;
 }
 
 /* MovieOverview styles
    ====================================================== */
-.movie-list {
-  padding: 1.8em;
+main {
+  padding: 1.25em;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -108,22 +129,37 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: absolute;
+  z-index: 1;
+  top: 550px;
 }
 
-.movie-list__load-btn {
-  width: 50%;
-  margin: 2em;
-  border: 0.1em solid #ffffff4b;
+.movie-list {
+  width: 100%;
+  max-width: 1200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.load-btn {
+  width: 195px;
+  height: 56px;
+  margin: 3.8em auto;
+  border: 0.125em solid rgba(255, 255, 255, 0.2);
   border-radius: 28px;
   padding: .8em;
   background: transparent;
   font-family: "Righteous", cursive;
-  text-decoration: none;
+  font-size: 1rem;
   color: currentColor;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -131,16 +167,16 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   /* Load icon */
 }
 
-.movie-list__load-btn::before {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin-right: 1em;
+.load-btn::before {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 1.07em;
   content: ' ';
   background: url(./assets/load-icon.png) no-repeat center/cover;
 }
@@ -148,9 +184,13 @@ body {
 /* Movie item styles
    ====================================================== */
 .movie-item {
-  width: 95%;
-  height: calc(95vw / .75);
-  margin: 1.2em 0;
+  width: 100%;
+  min-width: 335px;
+  max-width: 370px;
+  min-height: 498px;
+  height: calc(95vw / .7);
+  max-height: 550px;
+  margin: 1.2em .6em;
   position: relative;
 }
 
@@ -158,7 +198,6 @@ body {
   height: 100%;
   width: 100%;
   content: ' ';
-  background: radial-gradient(circle, rgba(14, 14, 14, 0) 0%, #0e0e0e 100%);
   position: absolute;
   left: 0;
   bottom: 0;
@@ -166,17 +205,17 @@ body {
 
 .movie-item__poster {
   width: 100%;
-  height: 90%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
 .movie-item__movie-info {
   width: 100%;
-  padding: 1em;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(14, 14, 14, 0)), color-stop(40%, #0E0E0E));
-  background: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, #0E0E0E 40%);
-  line-height: 1.5em;
+  padding: 1.7em;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(14, 14, 14, 0)), color-stop(40%, rgba(14, 14, 14, 0.9)));
+  background: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, rgba(14, 14, 14, 0.9) 40%);
+  line-height: 2em;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -185,20 +224,24 @@ body {
 
 .movie-item__movie-info__title {
   font-family: "Righteous", cursive;
+  font-size: 1.5rem;
 }
 
 .movie-item__movie-info__rating {
-  font-size: .8rem;
+  font-size: .87rem;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 
 .movie-item__movie-info__rating::before {
-  margin-right: 1.5em;
+  margin-right: 1.4em;
   content: '❤❤︎❤︎❤︎❤︎';
   content: '🖤🖤🖤🖤🖤';
   background: -webkit-gradient(linear, left top, right top, from(#FF2345), to(rgba(255, 255, 255, 0.1)));
   background: linear-gradient(90deg, #FF2345 var(--percent), rgba(255, 255, 255, 0.1) var(--percent));
   background-clip: text;
-  letter-spacing: .1rem;
+  letter-spacing: .2rem;
+  font-size: 1rem;
   color: transparent;
 }
 
@@ -234,7 +277,11 @@ body {
 
 .modal {
   width: 95%;
-  height: 95%;
+  min-width: 335px;
+  max-width: 1000px;
+  min-height: 498px;
+  max-height: 690px;
+  height: 90%;
   background-color: #0E0E0E;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -251,11 +298,15 @@ body {
 
 .modal__poster {
   width: 100%;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .modal__info {
+  width: 100%;
   padding: 1.5em;
   background-color: #0E0E0E;
   background: -webkit-gradient(linear, left top, left bottom, from(#0e0e0e00), color-stop(10%, #0E0E0E));
@@ -265,21 +316,26 @@ body {
 }
 
 .modal__info__title {
+  width: 90%;
+  max-width: 700px;
   font-family: "Righteous", cursive;
 }
 
 .modal__info__description {
   width: 90%;
+  max-width: 570px;
   margin-top: 1em;
-  font-size: 1.1rem;
+  font-size: 1.125rem;
   line-height: 1.5rem;
 }
 
 .modal__info__btn {
-  width: 250px;
-  margin: 2em 0;
+  width: 259px;
+  max-width: 90%;
+  height: 56px;
+  margin-top: 2em;
   border-radius: 28px;
-  padding: .8em;
+  padding: 0 1.8em;
   background-color: #FF2345;
   font-family: "Righteous", cursive;
   color: currentColor;
@@ -287,8 +343,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -300,5 +357,23 @@ body {
 
 .modal__info__btn {
   margin: 2em 0 0;
+}
+
+/* Media queries
+   ====================================================== */
+@media (min-width: 1025px) {
+  main {
+    top: 750px;
+  }
+  .header {
+    padding: 2.8em;
+  }
+  .header__content__title {
+    margin-top: 1.8em;
+    font-size: 5.6rem;
+  }
+  .header__content__description {
+    font-weight: bold;
+  }
 }
 /*# sourceMappingURL=App.css.map */
