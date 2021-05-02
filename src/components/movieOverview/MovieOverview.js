@@ -8,14 +8,14 @@ const MovieList = () => {
         movies: [],
     });
     const [pageNum, setPageNum] = useState(1);
+    const apiKey = '6907e1c0';
 
     const loadMovies = () => {
-        const apiKey = '6907e1c0';
-        const apiUrl = `http://www.omdbapi.com/?s=superhero&page=${pageNum}&apikey=${apiKey}`;
+        const apiUrl = `http://www.omdbapi.com/?s=superhero&page=${pageNum + 1}&apikey=${apiKey}`;
         fetch(apiUrl)
             .then((response) => response.json())
             .then((data) => {
-                setMovieItems({ isLoading: false, movies: [...movieItems.movies, ...data.Search] })
+                setMovieItems({ movies: [...movieItems.movies, ...data.Search] })
             })
             .catch((err) => console.log(err.message));
         setPageNum(pageNum + 1);
@@ -24,9 +24,14 @@ const MovieList = () => {
     // fetches initial list of movies on mount
     useEffect(() => {
         setMovieItems({ isLoading: true });
-        loadMovies();
-    }, // eslint-disable-next-line 
-        [setMovieItems]);
+        const apiUrl = `http://www.omdbapi.com/?s=superhero&page=1&apikey=${apiKey}`;
+        fetch(apiUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                setMovieItems({ isLoading: false, movies: data.Search })
+            })
+            .catch((err) => console.log(err.message));
+    }, [setMovieItems]);
 
 
     const listMovieItems = () => {
