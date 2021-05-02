@@ -25,7 +25,8 @@ const MovieList = () => {
     useEffect(() => {
         setMovieItems({ isLoading: true });
         loadMovies();
-    }, [setMovieItems]);
+    }, // eslint-disable-next-line 
+        [setMovieItems]);
 
 
     const listMovieItems = () => {
